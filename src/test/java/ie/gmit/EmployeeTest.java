@@ -21,6 +21,13 @@ public class EmployeeTest {
     }
 
     @Test
+    void nameTestFail2()
+    {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Employee("Mr", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "123456", "1234567", "full-time", 18));
+        assertEquals("Invalid Name", e.getMessage());
+    }
+
+    @Test
     void nameTest()
     {
         assertEquals("latif", e1.getName());
@@ -37,6 +44,20 @@ public class EmployeeTest {
     void titleTest()
     {
         assertEquals("Mr", e1.getTitle());
+    }
+
+    @Test
+    void titleTest2()
+    {
+        Employee employee = new Employee("Ms", "latif", "123456", "1234567", "full-time", 18);
+        assertEquals("Ms", employee.getTitle());
+    }
+
+    @Test
+    void titleTest3()
+    {
+        Employee employee = new Employee("Mrs", "latif", "123456", "1234567", "full-time", 18);
+        assertEquals("Mrs", employee.getTitle());
     }
 
     @Test
@@ -76,6 +97,13 @@ public class EmployeeTest {
     void employmentTest()
     {
         assertEquals("full-time", e1.getEmploymentType());
+    }
+
+    @Test
+    void employmentTest2()
+    {
+        Employee employee = new Employee("Mr", "latif", "123456", "1234567", "part-time", 18);
+        assertEquals("part-time", employee.getEmploymentType());
     }
 
     @Test
